@@ -10,29 +10,50 @@ const awardsRight = AWARDS.slice(2);
 export default function HomePage() {
   return (
     <main id="main">
-      <section className="meta-grid">
-        <div>
-          <p>{PERSON.name}</p>
-          <p className="ml" lang="ml">
+      <section className="titlepage">
+        <h2 className="titlepage-name">
+          <span className="titlepage-ml ml" lang="ml">
             {PERSON.nameMl}
-          </p>
-          <p>{PERSON.descriptor}</p>
-          <p>Born in Cheekode, Malappuram, Kerala</p>
-          <p>Translated into Hindi, Tamil, Bengali, Assamese, English</p>
-        </div>
+          </span>
+          <span className="titlepage-en serif">{PERSON.name}</span>
+        </h2>
+        <p className="titlepage-role">{PERSON.descriptor}</p>
+        <p className="titlepage-role">Cheekode, Malappuram, Kerala</p>
+        <p className="titlepage-role">Translated into Hindi, Tamil, Bengali, Assamese, English</p>
+        <span className="ornament" aria-hidden="true" />
+        <p className="titlepage-links">
+          <a href={`mailto:${PERSON.email}`}>{PERSON.email}</a>
+          <a href={PERSON.truecopyTag}>Truecopy Think</a>
+        </p>
+      </section>
+
+      <section className="feature" aria-labelledby="featured-work">
+        <figure className="feature-figure">
+          <Image
+            src="/images/suresh-wlf-1.jpg"
+            alt="O.P. Suresh speaking at the Wayanad Literature Festival, seated with a microphone."
+            width={900}
+            height={1200}
+            priority
+          />
+          <figcaption>
+            <a href={LINKS.wlf}>Wayanad Literature Festival</a>
+          </figcaption>
+        </figure>
         <div>
-          <p>Official site</p>
-          <p>
-            <a href={`mailto:${PERSON.email}`}>{PERSON.email}</a>
+          <h2 id="featured-work" className="feature-title serif">
+            <span className="ml" lang="ml">
+              താജ്മഹൽ
+            </span>
+            Tajmahal
+          </h2>
+          <p className="feature-text serif">
+            The collection to begin with. Thirty-five poems, written between 2015 and 2018.
           </p>
-          <p>
-            <a href={PERSON.truecopyTag}>Truecopy Think</a>
+          <p className="feature-links">
+            <a href={LINKS.tajmahal}>The book</a>
+            <Link href="/works">Works</Link>
           </p>
-        </div>
-        <div>
-          {AWARDS.map((a) => (
-            <p key={a.titleEn + a.year}>{`${a.titleEn}, ${a.year}`}</p>
-          ))}
         </div>
       </section>
 
@@ -85,35 +106,6 @@ export default function HomePage() {
               {a.note ?? ''}
             </div>
           ))}
-        </div>
-      </section>
-
-      <section className="feature" aria-labelledby="featured-work">
-        <figure className="feature-figure">
-          <Image
-            src="/images/suresh-wlf-1.jpg"
-            alt="O.P. Suresh speaking at the Wayanad Literature Festival, seated with a microphone."
-            width={900}
-            height={1200}
-          />
-          <figcaption>
-            <a href={LINKS.wlf}>Wayanad Literature Festival</a>
-          </figcaption>
-        </figure>
-        <div>
-          <h2 id="featured-work" className="feature-title serif">
-            <span className="ml" lang="ml">
-              താജ്മഹൽ
-            </span>
-            Tajmahal
-          </h2>
-          <p className="feature-text serif">
-            The collection to begin with. Thirty-five poems, written between 2015 and 2018.
-          </p>
-          <p className="feature-links">
-            <a href={LINKS.tajmahal}>The book</a>
-            <Link href="/works">Works</Link>
-          </p>
         </div>
       </section>
     </main>

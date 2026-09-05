@@ -9,6 +9,7 @@ export default function AboutPage() {
     <main id="main">
       <header className="room-head">
         <h2 className="serif">About</h2>
+        <span className="ornament" aria-hidden="true" />
       </header>
       <hr />
       <div className="about-split">

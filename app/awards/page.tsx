@@ -11,6 +11,7 @@ export default function AwardsPage() {
     <main id="main">
       <header className="room-head">
         <h2 className="serif">Awards</h2>
+        <span className="ornament" aria-hidden="true" />
       </header>
       <hr />
       <section className="list-section">

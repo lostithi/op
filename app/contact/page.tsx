@@ -8,6 +8,7 @@ export default function ContactPage() {
     <main id="main">
       <header className="room-head">
         <h2 className="serif">Contact</h2>
+        <span className="ornament" aria-hidden="true" />
       </header>
       <hr />
       <div className="letter">

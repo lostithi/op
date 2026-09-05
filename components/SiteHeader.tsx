@@ -27,7 +27,12 @@ export function SiteHeader() {
         </Link>
         <nav className="nav" aria-label="Primary">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} aria-current={path === l.href ? 'page' : undefined}>
+            <Link
+              key={l.href}
+              className="nav-link"
+              href={l.href}
+              aria-current={path === l.href ? 'page' : undefined}
+            >
               {l.label}
             </Link>
           ))}
