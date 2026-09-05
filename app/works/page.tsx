@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { BOOKS, LINKS } from '@/lib/suresh';
+import { BOOKS, LINKS, POEMS, READINGS } from '@/lib/suresh';
 
 export const metadata: Metadata = { title: 'Works' };
 
@@ -47,7 +47,9 @@ export default function WorksPage() {
           </p>
           <p className="folio-note">
             Poems first appeared in Mathrubhumi weekly.{' '}
-            <a href={LINKS.tajmahal}>Insight Publica</a>.
+            <a href={LINKS.tajmahal}>DC Books</a>
+            {'. '}
+            <a href={LINKS.tajmahalInsight}>Insight Publica</a>.
           </p>
         </div>
       </section>
@@ -56,15 +58,28 @@ export default function WorksPage() {
         <div className="folio-axis" aria-hidden="true" />
         <AxisMark kind="square" />
         <div className="folio-pane left">
-          <h2 className="folio-display serif">Collections in Malayalam.</h2>
+          <h2 className="folio-display serif">Songs.</h2>
           <p className="folio-note">
-            English titles are here so a first-time reader can find them. Poems stay with their publishers.
+            <a href={LINKS.songMadangiyethumbol}>Madangiyethumbol</a>
+            {' — Shahabaz Aman'}
+            <br />
+            <a href={LINKS.jiosaavn}>O.P. Suresh — JioSaavn</a>
           </p>
         </div>
         <div className="folio-pane right">
-          <p className="folio-lede serif">World Poetry Day, 2023.</p>
+          <p className="folio-lede serif">Readings</p>
           <p className="folio-note">
-            <a href={LINKS.kalapurushan}>കാലപുരുഷൻ — Mathrubhumi</a>
+            {READINGS.map((r, i) => (
+              <span key={r.href}>
+                {i > 0 ? <br /> : null}
+                <a href={r.href}>
+                  <span className="ml" lang="ml">
+                    {r.titleMl}
+                  </span>
+                  {` — ${r.source}`}
+                </a>
+              </span>
+            ))}
           </p>
         </div>
       </section>
@@ -89,6 +104,19 @@ export default function WorksPage() {
                     </span>
                   </span>
                   <span className="archive-note">{b.note}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="folio-lede serif">Poems in print.</p>
+          <ul className="archive-list">
+            {POEMS.map((p) => (
+              <li key={p.href}>
+                <a className="archive-item" href={p.href}>
+                  <span className="ml" lang="ml">
+                    {p.titleMl}
+                  </span>
+                  <span className="archive-note">{p.source}</span>
                 </a>
               </li>
             ))}

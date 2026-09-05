@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { LINKS, PERSON } from '@/lib/suresh';
 
 export const metadata: Metadata = { title: 'About' };
 
@@ -18,7 +19,9 @@ export default function AboutPage() {
             width={1200}
             height={900}
           />
-          <figcaption>Wayanad Literature Festival</figcaption>
+          <figcaption>
+            <a href={LINKS.wlf}>Wayanad Literature Festival</a>
+          </figcaption>
         </figure>
         <div className="page-copy">
           <p>
@@ -26,8 +29,13 @@ export default function AboutPage() {
             poems have been translated into Hindi, Tamil, Bengali, Assamese, and English.
           </p>
           <p>
-            He has worked as a teacher, a journalist, and a management consultant. In 2018 he was unit manager of
-            Deshabhimani in Kozhikode.
+            He has taught at Guruvayurappan College in Kozhikode and at Minicoy Senior Secondary School, and has worked as
+            a journalist and a management consultant. He is manager of the Deshabhimani Kozhikode unit.
+          </p>
+          <p>
+            He has appeared at the <a href={LINKS.wlf}>Wayanad Literature Festival</a> and the{' '}
+            <a href={LINKS.klf}>Kerala Literature Festival</a>. Readings and conversations are gathered on{' '}
+            <a href={PERSON.truecopyTag}>Truecopy Think</a>.
           </p>
         </div>
       </div>

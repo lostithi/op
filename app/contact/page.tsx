@@ -17,6 +17,10 @@ export default function ContactPage() {
             {PERSON.email}
           </a>
         </p>
+        <p className="letter-socials">
+          <a href={PERSON.instagram}>Instagram</a>
+          <a href={PERSON.facebook}>Facebook</a>
+        </p>
         <p className="letter-sign ml" lang="ml">
           {PERSON.nameMl}
         </p>

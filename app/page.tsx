@@ -26,7 +26,7 @@ export default function HomePage() {
             <a href={`mailto:${PERSON.email}`}>{PERSON.email}</a>
           </p>
           <p>
-            <a href={PERSON.truecopy}>Truecopy Think</a>
+            <a href={PERSON.truecopyTag}>Truecopy Think</a>
           </p>
         </div>
         <div>
@@ -96,7 +96,9 @@ export default function HomePage() {
             width={900}
             height={1200}
           />
-          <figcaption>Wayanad Literature Festival</figcaption>
+          <figcaption>
+            <a href={LINKS.wlf}>Wayanad Literature Festival</a>
+          </figcaption>
         </figure>
         <div>
           <h2 id="featured-work" className="feature-title serif">

@@ -302,6 +302,19 @@ hr {
   text-underline-offset: 0.22em;
 }
 
+.letter-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  margin-top: 1.25rem;
+  font-size: 13px;
+}
+
+.letter-socials a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 .letter-sign {
   margin-top: 3rem;
   font-size: 1.05rem;
@@ -473,6 +486,10 @@ hr {
   line-height: 1.45;
 }
 
+.archive-list + .folio-lede {
+  margin-top: 2.25rem;
+}
+
 .folio-note {
   max-width: 26rem;
   margin: 1.4rem auto 0;
@@ -538,7 +555,8 @@ hr {
 
 @media (pointer: coarse) {
   .nav a,
-  .letter-mail {
+  .letter-mail,
+  .letter-socials a {
     min-height: 44px;
     display: inline-flex;
     align-items: center;
