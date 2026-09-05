@@ -1,0 +1,9 @@
+{
+  "world": "knowledge-panel-dossier",
+  "seed": "client-pinned",
+  "retired": "broadcast-programming-teletext-service",
+  "motion": {
+    "carousel": "horizontal snap scroll"
+  },
+  "focus": "2px solid #1c1917"
+}

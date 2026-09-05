@@ -1,0 +1,78 @@
+{
+  "title": "Choose the visual world",
+  "question": "The site must still read as a Knowledge Panel (name, descriptor, portrait, fact cards) — never a fake Google page. The roll built that grammar out of a DC Books jacket table. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Jacket Table",
+      "kicker": "THE ROLL",
+      "lineage": "DC Books cover stock at a Kerala book-fair table",
+      "thesis": "O.P. Suresh is discovered the way a book is: a Knowledge Panel printed as jackets, not a poet on cream paper and not a Google clone.",
+      "palette": ["#F5C518", "#12110F", "#C43C22", "#0E3D3A", "#F4EDE0"],
+      "materials": ["laminated jacket", "cloth spine", "foil stamp", "book-fair table"],
+      "viewport": "Saturated DC yellow field. Huge cover-title 'O.P. Suresh'. Publisher line 'Malayalam poet, songwriter, translator'. Portrait as a jacket photo. Books / awards / Kerala as smaller stacked jackets.",
+      "risk": "Yellow can read as marketplace chrome if the type is not as grave as a jacket spine.",
+      "sketch": ".impeccable/sketches/assigned.png"
+    },
+    {
+      "id": "teletext",
+      "label": "Page 100",
+      "kicker": "CHALLENGER",
+      "lineage": "Broadcast teletext magazine",
+      "thesis": "His public graph is a keyed magazine: identity on page 100, books on 200, awards on 300, Malayalam titles waiting behind REVEAL.",
+      "palette": ["#000000", "#FFFFFF", "#FFFF00", "#00FFFF", "#FF0000"],
+      "materials": ["CRT black", "block mosaic", "double-height header", "40×24 grid"],
+      "viewport": "Black 40-column screen. Double-height yellow 'O.P. SURESH'. Cyan facts for Akademi 2020 and Cheekode. A 100/200/300 page header. REVEAL hint for താജ്മഹൽ.",
+      "case": "Wins clarity for a knowledge graph; loses identification — literary readers will not see themselves in Ceefax.",
+      "risk": "A retro tech demo that forgets he is a poet.",
+      "sketch": ".impeccable/sketches/teletext.png",
+      "hero": ".impeccable/quality-bar/teletext-hero.webp",
+      "board": ".impeccable/quality-bar/teletext-board.webp"
+    },
+    {
+      "id": "linocut",
+      "label": "One Block",
+      "kicker": "CHALLENGER",
+      "lineage": "Taller Gráfica linocut broadside",
+      "thesis": "One gouged sheet is the panel: name and face cut from black; each book is the next demand, not a card in a grid.",
+      "palette": ["#1A1208", "#E6D2A8", "#F4EFE4"],
+      "materials": ["relief ink", "manila", "gouge white", "press impression"],
+      "viewport": "Cheap manila field. Monumental black figure cropped from below. Irregular carved caps 'O.P. Suresh'. A single carved line of awards under the fist of the portrait.",
+      "case": "Wins identification with Kerala's political print shop; loses catalog clarity — one demand per sheet hides the books Google needs to list.",
+      "risk": "Strike-poster heat overstates a lyric poet.",
+      "sketch": ".impeccable/sketches/linocut.png",
+      "hero": ".impeccable/quality-bar/linocut-hero.webp",
+      "board": ".impeccable/quality-bar/linocut-board.webp"
+    },
+    {
+      "id": "moon-bazaar",
+      "label": "Shadow Stall",
+      "kicker": "CHALLENGER",
+      "lineage": "Moon-shadow bazaar",
+      "thesis": "Poems as stalls of borrowed light — a night lane of titles tagged by origin and length.",
+      "palette": ["#071018", "#0B1C2E", "#C4A35A", "#E8F0FF"],
+      "materials": ["moonlit canvas", "layered black", "chalk ticket", "stall cloth"],
+      "viewport": "Blue-black lane. A stall sign 'O.P. Suresh'. Shadow-goods labeled as book titles. Moon-white edge on the active stall.",
+      "case": "Fuses poorly: this product is sourced facts for search, not tradable shadows. Mood without a Person graph.",
+      "risk": "Beautiful and unclaimable — Google cannot ingest a bazaar.",
+      "sketch": ".impeccable/sketches/moon-bazaar.png",
+      "hero": ".impeccable/quality-bar/moon-hero.webp",
+      "board": ".impeccable/quality-bar/moon-board.webp"
+    }
+  ],
+  "reroll": true,
+  "canon": true,
+  "steer": true,
+  "canonCard": {
+    "id": "canon",
+    "label": "Play it straight",
+    "kicker": "CATEGORY STANDARD",
+    "lineage": "English-language poet brochure site",
+    "thesis": "A conventional poet homepage: name, portrait, About, Books, Awards, Contact — cream paper, literary serif, no invented grammar.",
+    "palette": ["#F7F1E8", "#1C1916", "#8B3A2A", "#5C5346"],
+    "materials": ["laid paper", "centered portrait", "hairline rule", "footer colophon"],
+    "viewport": "Cream page. Centered name. Subtitle poet/translator. Circular portrait. Nav: About / Books / Contact.",
+    "risk": "Indistinguishable from a hundred other writer sites; weaker as a Knowledge Panel analogue.",
+    "sketch": ".impeccable/sketches/canon.png"
+  }
+}

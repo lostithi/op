@@ -1,0 +1,8 @@
+{
+  "id": "comp-a-panel",
+  "approved": false,
+  "world": "broadcast-programming-teletext-service",
+  "seed": "9898f932",
+  "prompt": "Ceefax page 100 as Knowledge Panel: header P100, double-height name, mosaic portrait, three fact boxes, fastext footer 100/200/300 + REVEAL.",
+  "path": ".impeccable/mocks/comp-a-panel.png"
+}

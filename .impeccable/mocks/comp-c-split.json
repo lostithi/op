@@ -1,0 +1,8 @@
+{
+  "id": "comp-c-split",
+  "approved": true,
+  "world": "broadcast-programming-teletext-service",
+  "seed": "9898f932",
+  "prompt": "Split teletext magazine: mosaic portrait left, stacked yellow/white facts right, HOLD subpage carousel.",
+  "path": ".impeccable/mocks/comp-c-split.png"
+}

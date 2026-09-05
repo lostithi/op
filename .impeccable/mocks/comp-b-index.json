@@ -1,0 +1,8 @@
+{
+  "id": "comp-b-index",
+  "approved": false,
+  "world": "broadcast-programming-teletext-service",
+  "seed": "9898f932",
+  "prompt": "Teletext programme guide: numbered index of identity, books, awards as keyed pages. No portrait. Dense 40-column listing.",
+  "path": ".impeccable/mocks/comp-b-index.png"
+}
