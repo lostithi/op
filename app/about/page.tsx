@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { LINKS, PERSON } from '@/lib/suresh';
+import { EDUCATION, ENGAGEMENTS, LINKS, PERSON, PHOTOS, PORTRAIT } from '@/lib/suresh';
 
 export const metadata: Metadata = { title: 'About' };
 
@@ -15,30 +15,52 @@ export default function AboutPage() {
       <div className="about-split">
         <figure className="about-figure">
           <Image
-            src="/images/suresh-wlf-2.jpg"
-            alt="O.P. Suresh at the Wayanad Literature Festival, speaking beside a clay pitcher."
-            width={1200}
-            height={900}
+            src={PORTRAIT.src}
+            alt={PORTRAIT.alt}
+            width={PORTRAIT.width}
+            height={PORTRAIT.height}
+            priority
           />
-          <figcaption>
-            <a href={LINKS.wlf}>Wayanad Literature Festival</a>
-          </figcaption>
+          <figcaption>{PORTRAIT.caption}</figcaption>
         </figure>
         <div className="page-copy">
           <p>
-            O.P. Suresh is a Malayalam poet, songwriter, and translator from Cheekode, in Malappuram district, Kerala. His
-            poems have been translated into Hindi, Tamil, Bengali, Assamese, and English.
+            O.P. Suresh is a poet, author, and journalist, aged {PERSON.age}, working predominantly in Malayalam. He has
+            published five books in Malayalam, and has edited <span className="ml" lang="ml">സിനിമയുടെ സഹയാത്രികൻ</span>{' '}
+            (Cinemayude Sahayaathrikan). His poems have been translated into English, Hindi, and Tamil.
           </p>
           <p>
-            He has taught at Guruvayurappan College in Kozhikode and at Minicoy Senior Secondary School, and has worked as
-            a journalist and a management consultant. He is manager of the Deshabhimani Kozhikode unit.
+            He has worked in Mathrubhumi, Deepika, and Deshabhimani, and as a lecturer in Malayalam language and
+            literature at Zamorin’s Guruvayurappan College, Kozhikode. The{' '}
+            <a href={LINKS.wlf}>Wayanad Literature Festival</a> speaker note also records teaching at Minicoy Senior
+            Secondary School. He currently serves as head of the Kozhikode unit of Deshabhimani Publications.
           </p>
           <p>
-            He has appeared at the <a href={LINKS.wlf}>Wayanad Literature Festival</a> and the{' '}
-            <a href={LINKS.klf}>Kerala Literature Festival</a>. Readings and conversations are gathered on{' '}
-            <a href={PERSON.truecopyTag}>Truecopy Think</a>.
+            His native place is Cheekode, Malappuram, as given on the Mathrubhumi Books author note and in Indian Express
+            Malayalam, 15 October 2018. That report also says he had worked in teaching, marketing, and journalism, and
+            was then manager of the Deshabhimani Kozhikode unit.
           </p>
+          <h3>Education</h3>
+          <ul className="fact-list">
+            {EDUCATION.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
+          <h3>Engagements</h3>
+          <ul className="fact-list">
+            {ENGAGEMENTS.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
         </div>
+      </div>
+      <div className="photo-grid">
+        {PHOTOS.map((photo) => (
+          <figure key={photo.src}>
+            <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} />
+            <figcaption>{photo.caption}</figcaption>
+          </figure>
+        ))}
       </div>
     </main>
   );

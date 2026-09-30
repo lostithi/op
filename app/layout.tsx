@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Inter, Libre_Baskerville, Noto_Sans_Malayalam, Noto_Serif_Malayalam } from 'next/font/google';
 import { SiteHeader } from '@/components/SiteHeader';
-import { PERSON, personJsonLd } from '@/lib/suresh';
+import { PERSON, PORTRAIT, SITE, personJsonLd } from '@/lib/suresh';
 import './globals.css';
 
 const sans = Inter({
@@ -31,7 +31,7 @@ const mlSerif = Noto_Serif_Malayalam({
   display: 'swap',
 });
 
-const site = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://127.0.0.1:3000';
+const site = process.env.NEXT_PUBLIC_SITE_URL ?? SITE;
 
 export const viewport = {
   width: 'device-width',
@@ -46,12 +46,22 @@ export const metadata: Metadata = {
     template: '%s — O.P. Suresh',
   },
   description:
-    'Official site of O.P. Suresh, Malayalam poet, songwriter and translator from Cheekode, Kerala.',
+    'Official site of O.P. Suresh, Malayalam poet, author, and journalist from Cheekode, Kerala.',
+  alternates: { canonical: '/' },
   openGraph: {
     title: 'O.P. Suresh',
-    description: 'Malayalam poet, songwriter, and translator. Cheekode, Kerala.',
+    description: 'Malayalam poet, author, and journalist. Cheekode, Malappuram, Kerala.',
     type: 'profile',
+    url: site,
     locale: 'en_IN',
+    images: [
+      {
+        url: PORTRAIT.src,
+        width: PORTRAIT.width,
+        height: PORTRAIT.height,
+        alt: PORTRAIT.alt,
+      },
+    ],
   },
 };
 

@@ -7,13 +7,13 @@ Wikidata, books, and news. O.P. Suresh already has:
 - Malayalam Wikipedia
 - Wikidata Q110120248 (almost empty: English label missing, no occupation, no awards)
 - No English Wikipedia
-- No official website (this project)
-- No confirmed birth date or photograph in our sources
+- Official website: https://opsuresh.com
+- Photograph supplied by the author and published on the site. No confirmed birth date.
 
 ## Do this in order
 
-1. Ship this site on a real domain. Add the domain to Wikidata P856 and to the JSON-LD `url`.
-2. Run `wikidata-quickstatements.qs` while logged into Wikidata.
+1. Point opsuresh.com at the host in Cloudflare, then ship the site. The JSON-LD `url` and canonical are already https://opsuresh.com.
+2. Run `wikidata-quickstatements.qs` while logged into Wikidata. The official-website line (P856) is https://opsuresh.com/.
 3. Verify Person schema with Google's Rich Results Test.
 4. Add the domain to Google Search Console and request indexing.
 5. If a panel appears, claim it with [Google's knowledge-panel tools](https://support.google.com/knowledgepanel/answer/7534842).

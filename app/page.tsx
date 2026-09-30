@@ -1,16 +1,26 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { AWARDS, BOOKS, LINKS, PERSON } from '@/lib/suresh';
+import { AWARDS, BOOKS, LINKS, PERSON, PORTRAIT } from '@/lib/suresh';
 
 const worksLeft = BOOKS.slice(0, 3);
 const worksRight = BOOKS.slice(3);
-const awardsLeft = AWARDS.slice(0, 2);
-const awardsRight = AWARDS.slice(2);
+const awardSplit = Math.ceil(AWARDS.length / 2);
+const awardsLeft = AWARDS.slice(0, awardSplit);
+const awardsRight = AWARDS.slice(awardSplit);
 
 export default function HomePage() {
   return (
     <main id="main">
       <section className="titlepage">
+        <figure className="titlepage-portrait">
+          <Image
+            src={PORTRAIT.src}
+            alt={PORTRAIT.alt}
+            width={PORTRAIT.width}
+            height={PORTRAIT.height}
+            priority
+          />
+        </figure>
         <h2 className="titlepage-name">
           <span className="titlepage-ml ml" lang="ml">
             {PERSON.nameMl}
@@ -18,8 +28,8 @@ export default function HomePage() {
           <span className="titlepage-en serif">{PERSON.name}</span>
         </h2>
         <p className="titlepage-role">{PERSON.descriptor}</p>
-        <p className="titlepage-role">Cheekode, Malappuram, Kerala</p>
-        <p className="titlepage-role">Translated into Hindi, Tamil, Bengali, Assamese, English</p>
+        <p className="titlepage-role">{PERSON.nativePlace}</p>
+        <p className="titlepage-role">Poems translated into English, Hindi, and Tamil</p>
         <span className="ornament" aria-hidden="true" />
         <p className="titlepage-links">
           <a href={`mailto:${PERSON.email}`}>{PERSON.email}</a>
@@ -30,25 +40,26 @@ export default function HomePage() {
       <section className="feature" aria-labelledby="featured-work">
         <figure className="feature-figure">
           <Image
-            src="/images/suresh-wlf-1.jpg"
-            alt="O.P. Suresh speaking at the Wayanad Literature Festival, seated with a microphone."
-            width={900}
-            height={1200}
+            src="/images/cover-taj.jpg"
+            alt="DC Books cover of Taj Mahal by O.P. Suresh. The cover is marked 2nd edition."
+            width={661}
+            height={1024}
             priority
           />
           <figcaption>
-            <a href={LINKS.wlf}>Wayanad Literature Festival</a>
+            <a href={LINKS.tajmahal}>DC Books, 2nd edition</a>
           </figcaption>
         </figure>
         <div>
           <h2 id="featured-work" className="feature-title serif">
             <span className="ml" lang="ml">
-              താജ്മഹൽ
+              താജ് മഹൽ
             </span>
-            Tajmahal
+            Taj Mahal
           </h2>
           <p className="feature-text serif">
-            The collection to begin with. Thirty-five poems, written between 2015 and 2018.
+            Thirty-five poems, written from 2015 to 2018. Kerala Sahitya Akademi Award for Poetry, 2020.
+            Cherukad Award, 2018.
           </p>
           <p className="feature-links">
             <a href={LINKS.tajmahal}>The book</a>
@@ -68,7 +79,7 @@ export default function HomePage() {
               <span className="ml" lang="ml">
                 {b.titleMl}
               </span>
-              {b.note}
+              {b.gloss}
             </Link>
           ))}
         </div>
@@ -79,7 +90,7 @@ export default function HomePage() {
               <span className="ml" lang="ml">
                 {b.titleMl}
               </span>
-              {b.note}
+              {b.gloss}
             </Link>
           ))}
         </div>
@@ -92,18 +103,20 @@ export default function HomePage() {
         <div className="entry-group">
           {awardsLeft.map((a) => (
             <div className="entry" key={a.titleEn + a.year}>
-              <strong>{a.titleEn}</strong>
-              {a.work ? `For ${a.work}. ` : ''}
-              {a.note ?? ''}
+              <strong>
+                {a.year} · {a.titleEn}
+              </strong>
+              {a.work ? `For ${a.work}.` : ''}
             </div>
           ))}
         </div>
         <div className="entry-group">
           {awardsRight.map((a) => (
             <div className="entry" key={a.titleEn + a.year}>
-              <strong>{a.titleEn}</strong>
-              {a.work ? `For ${a.work}. ` : ''}
-              {a.note ?? ''}
+              <strong>
+                {a.year} · {a.titleEn}
+              </strong>
+              {a.work ? `For ${a.work}.` : ''}
             </div>
           ))}
         </div>

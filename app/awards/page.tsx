@@ -3,8 +3,9 @@ import { AWARDS } from '@/lib/suresh';
 
 export const metadata: Metadata = { title: 'Awards' };
 
-const left = AWARDS.slice(0, 2);
-const right = AWARDS.slice(2);
+const split = Math.ceil(AWARDS.length / 2);
+const left = AWARDS.slice(0, split);
+const right = AWARDS.slice(split);
 
 export default function AwardsPage() {
   return (
@@ -26,7 +27,7 @@ export default function AwardsPage() {
                 {a.titleMl}
               </span>
               {a.work ? `For ${a.work}. ` : ''}
-              {a.note ?? ''}
+              {a.href && a.note ? <a href={a.href}>{a.note}</a> : (a.note ?? '')}
             </article>
           ))}
         </div>
@@ -40,7 +41,7 @@ export default function AwardsPage() {
                 {a.titleMl}
               </span>
               {a.work ? `For ${a.work}. ` : ''}
-              {a.note ?? ''}
+              {a.href && a.note ? <a href={a.href}>{a.note}</a> : (a.note ?? '')}
             </article>
           ))}
         </div>

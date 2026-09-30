@@ -19,5 +19,4 @@ Q110120248	P69	Q8712666	S854	"https://farookcollege.ac.in/Department/malayalam-d
 Q110120248	P166	Q17008159	P585	+2020-00-00T00:00:00Z/9	S854	"https://en.wikipedia.org/wiki/2020_Kerala_Sahitya_Akademi_Awards"
 Q110120248	P166	Q16134153	P585	+2018-00-00T00:00:00Z/9	S854	"https://www.thehindu.com/news/cities/kozhikode/cherukad-award-for-op-suresh/article25244454.ece"
 
-# After the official site has a real domain, add:
-# Q110120248	P856	"https://EXAMPLE.org/"	S854	"https://EXAMPLE.org/"
+Q110120248	P856	"https://opsuresh.com/"	S854	"https://opsuresh.com/"

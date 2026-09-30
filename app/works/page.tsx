@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { BOOKS, LINKS, POEMS, READINGS } from '@/lib/suresh';
+import { BOOKS, LINKS, POEMS, READINGS, SONGS } from '@/lib/suresh';
 
 export const metadata: Metadata = { title: 'Works' };
 
@@ -26,27 +26,27 @@ export default function WorksPage() {
         <div className="folio-pane left">
           <h2 className="folio-display serif">
             <span className="ml" lang="ml">
-              താജ്മഹൽ
+              താജ് മഹൽ
             </span>
-            <em>Tajmahal</em>
+            <em>Taj Mahal</em>
           </h2>
           <figure className="folio-figure">
             <Image
-              src="/images/suresh-gathering.jpg"
-              alt="O.P. Suresh with M T Vasudhevan Nair."
-              width={699}
-              height={641}
+              src="/images/cover-taj.jpg"
+              alt="DC Books cover of Taj Mahal by O.P. Suresh. The cover is marked 2nd edition."
+              width={661}
+              height={1024}
             />
-            <figcaption>op with M T Vasudhevan Nair</figcaption>
+            <figcaption>DC Books, 2nd edition</figcaption>
           </figure>
         </div>
         <div className="folio-pane right">
           <p className="folio-lede serif">
-            Thirty-five poems written between 2015 and 2018. Kerala Sahitya Akademi Award for Poetry, 2020. Cherukad
-            Award, 2018.
+            Thirty-five poems, written from 2015 to 2018. Kerala Sahitya Akademi Award for Poetry, 2020, announced 17
+            August 2021. Cherukad Award, 2018. Dr. Rajan Memorial Award, 2018.
           </p>
           <p className="folio-note">
-            Poems first appeared in Mathrubhumi weekly.{' '}
+            Indian Express Malayalam, 15 October 2018, says the poems were published in Mathrubhumi weekly.{' '}
             <a href={LINKS.tajmahal}>DC Books</a>
             {'. '}
             <a href={LINKS.tajmahalInsight}>Insight Publica</a>.
@@ -60,8 +60,15 @@ export default function WorksPage() {
         <div className="folio-pane left">
           <h2 className="folio-display serif">Songs.</h2>
           <p className="folio-note">
-            <a href={LINKS.songMadangiyethumbol}>Madangiyethumbol</a>
-            {' — Shahabaz Aman'}
+            {SONGS.map((song, i) => (
+              <span key={song.href}>
+                {i > 0 ? <br /> : null}
+                <a href={song.href}>
+                  {song.title}
+                  {` — ${song.source}`}
+                </a>
+              </span>
+            ))}
             <br />
             <a href={LINKS.jiosaavn}>O.P. Suresh — JioSaavn</a>
           </p>
@@ -73,9 +80,13 @@ export default function WorksPage() {
               <span key={r.href}>
                 {i > 0 ? <br /> : null}
                 <a href={r.href}>
-                  <span className="ml" lang="ml">
-                    {r.titleMl}
-                  </span>
+                  {r.titleMl ? (
+                    <span className="ml" lang="ml">
+                      {r.titleMl}
+                    </span>
+                  ) : (
+                    r.title
+                  )}
                   {` — ${r.source}`}
                 </a>
               </span>
@@ -92,6 +103,18 @@ export default function WorksPage() {
           <h2 className="folio-display serif">The books as they are recorded.</h2>
         </div>
         <div className="folio-pane right">
+          <div className="cover-grid">
+            {BOOKS.flatMap((book) =>
+              book.covers.map((cover) => (
+                <figure key={cover.src}>
+                  <Image src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} />
+                  <figcaption>
+                    {book.titleEn}. {cover.caption}
+                  </figcaption>
+                </figure>
+              )),
+            )}
+          </div>
           <ul className="archive-list">
             {BOOKS.map((b) => (
               <li key={b.slug}>
@@ -109,15 +132,33 @@ export default function WorksPage() {
             ))}
           </ul>
           <p className="folio-lede serif">Poems in print.</p>
+          <figure className="folio-figure">
+            <Image
+              src="/images/poem-mathram.jpg"
+              alt="Poem card titled Mathram, signed O.P. Suresh, with a bare tree and a figure on a swing."
+              width={1024}
+              height={1024}
+            />
+            <figcaption>മാത്രം — O.P. Suresh</figcaption>
+          </figure>
           <ul className="archive-list">
             {POEMS.map((p) => (
-              <li key={p.href}>
-                <a className="archive-item" href={p.href}>
-                  <span className="ml" lang="ml">
-                    {p.titleMl}
+              <li key={p.title}>
+                {p.href ? (
+                  <a className="archive-item" href={p.href}>
+                    <span className="ml" lang="ml">
+                      {p.titleMl ?? p.title}
+                    </span>
+                    <span className="archive-note">{p.source}</span>
+                  </a>
+                ) : (
+                  <span className="archive-item">
+                    <span className="ml" lang="ml">
+                      {p.titleMl ?? p.title}
+                    </span>
+                    <span className="archive-note">{p.source}</span>
                   </span>
-                  <span className="archive-note">{p.source}</span>
-                </a>
+                )}
               </li>
             ))}
           </ul>

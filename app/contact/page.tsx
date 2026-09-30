@@ -13,6 +13,19 @@ export default function ContactPage() {
       <hr />
       <div className="letter">
         <p className="letter-lede serif">You are welcome to write.</p>
+        <address className="letter-address">
+          {PERSON.addressLines.map((line) => (
+            <span key={line}>
+              {line}
+              <br />
+            </span>
+          ))}
+        </address>
+        <p>
+          <a className="letter-mail" href={`tel:${PERSON.phone}`}>
+            {PERSON.phoneDisplay}
+          </a>
+        </p>
         <p>
           <a className="letter-mail" href={`mailto:${PERSON.email}`}>
             {PERSON.email}

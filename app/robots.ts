@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
+import { SITE } from '@/lib/suresh';
 
-const site = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://127.0.0.1:3000';
+const site = process.env.NEXT_PUBLIC_SITE_URL ?? SITE;
 
 export default function robots(): MetadataRoute.Robots {
   return {
