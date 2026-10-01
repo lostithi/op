@@ -4,17 +4,17 @@ import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import { ABOUT_PORTRAIT, PORTRAIT, type Picture } from '@/lib/suresh';
 
-const RESERVED = new Set([PORTRAIT.src, ABOUT_PORTRAIT.src]);
+const RESERVED = new Set<string>([PORTRAIT.src, ABOUT_PORTRAIT.src]);
 
 type Props = {
   portraits: readonly Picture[];
 };
 
-function slideStyle(portrait: Picture): CSSProperties | undefined {
+function imageStyle(portrait: Picture): CSSProperties | undefined {
   if (!portrait.objectPosition && !portrait.objectFit) return undefined;
   return {
-    ...(portrait.objectPosition ? { '--slide-focus': portrait.objectPosition } : {}),
-    ...(portrait.objectFit ? { '--slide-fit': portrait.objectFit } : {}),
+    objectPosition: portrait.objectPosition,
+    objectFit: portrait.objectFit,
   };
 }
 
@@ -38,7 +38,6 @@ export function PortraitSlideshow({ portraits }: Props) {
               className="portrait-slide"
               key={`${portrait.src}-${index}`}
               aria-hidden={isClone ? true : undefined}
-              style={slideStyle(portrait)}
             >
               <Image
                 src={portrait.src}
@@ -46,6 +45,8 @@ export function PortraitSlideshow({ portraits }: Props) {
                 width={portrait.width}
                 height={portrait.height}
                 sizes="11rem"
+                style={imageStyle(portrait)}
+                className="portrait-slide-img"
               />
             </figure>
           );

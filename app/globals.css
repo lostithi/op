@@ -974,12 +974,12 @@ hr {
   width: 11rem;
 }
 
-.portrait-slide img {
+.portrait-slide-img {
   display: block;
   width: 11rem;
   height: 16.5rem;
-  object-fit: var(--slide-fit, cover);
-  object-position: var(--slide-focus, center center);
+  object-fit: cover;
+  object-position: center center;
   background: color-mix(in srgb, currentColor 6%, transparent);
 }
 
