@@ -1,12 +1,105 @@
 export const SITE = 'https://opsuresh.com';
 
+/** Homepage and site metadata only — not used in the About slideshow or gallery. */
 export const PORTRAIT = {
-  src: '/images/suresh-wlf-1.jpg',
-  alt: 'O.P. Suresh speaking at the Wayanad Literature Festival. His badge reads O.P. Suresh, Speaker.',
-  width: 953,
+  src: '/images/portrait-studio.jpg',
+  alt: 'Portrait of O.P. Suresh in a yellow striped shirt against a black background.',
+  width: 682,
   height: 1024,
-  caption: 'Wayanad Literature Festival. The badge reads O.P. Suresh, Speaker.',
 } as const;
+
+export const ABOUT_PORTRAIT = {
+  src: '/images/portrait-seated.jpg',
+  alt: 'O.P. Suresh seated outdoors in a yellow kurta and white dhoti.',
+  width: 682,
+  height: 1024,
+  caption: 'O.P. Suresh',
+} as const;
+
+/** About-page marquee only — excludes homepage (`PORTRAIT`) and About lead (`ABOUT_PORTRAIT`). One entry per image file. */
+export const PORTRAIT_SLIDESHOW: Picture[] = [
+  {
+    src: '/images/slideshow-stage-ribbon.jpg',
+    alt: 'O.P. Suresh on stage with a prize rosette and three other men.',
+    width: 939,
+    height: 1024,
+    caption: 'O.P. Suresh',
+  },
+  {
+    src: '/images/slideshow-chin-portrait.jpg',
+    alt: 'Portrait of O.P. Suresh with his hand at his jaw.',
+    width: 1024,
+    height: 682,
+    caption: 'O.P. Suresh',
+    objectPosition: '50% 38%',
+  },
+  {
+    src: '/images/slideshow-iffk-group.jpg',
+    alt: 'O.P. Suresh with two other men. The lanyards read IFFK.',
+    width: 768,
+    height: 1024,
+    caption: 'At the IFFK.',
+  },
+  {
+    src: '/images/slideshow-reading-mic.jpg',
+    alt: 'O.P. Suresh speaking at a microphone.',
+    width: 1024,
+    height: 682,
+    caption: 'Speech at a public reading.',
+    objectPosition: '50% 40%',
+  },
+  {
+    src: '/images/portrait-beanie.jpg',
+    alt: 'Portrait of O.P. Suresh wearing glasses and a grey and black cap.',
+    width: 684,
+    height: 1024,
+    caption: 'O.P. Suresh',
+  },
+  {
+    src: '/images/slideshow-table-talk.jpg',
+    alt: 'O.P. Suresh speaking closely with another man at a table with a red cloth.',
+    width: 1024,
+    height: 887,
+    caption: 'O.P. Suresh',
+    objectPosition: '50% 42%',
+  },
+  {
+    src: '/images/slideshow-wlf-mic.jpg',
+    alt: 'O.P. Suresh speaking at the Wayanad Literature Festival. His badge reads O.P. Suresh, Speaker.',
+    width: 948,
+    height: 1024,
+    caption: 'Wayanad Literature Festival.',
+  },
+  {
+    src: '/images/slideshow-two-kurta.jpg',
+    alt: 'O.P. Suresh standing with an older man in a red kurta.',
+    width: 768,
+    height: 1024,
+    caption: 'O.P. Suresh',
+  },
+  {
+    src: '/images/slideshow-three-talk.jpg',
+    alt: 'O.P. Suresh in conversation with another man in front of a Malayalam banner.',
+    width: 699,
+    height: 641,
+    caption: 'O.P. Suresh',
+    objectPosition: '62% 32%',
+  },
+  {
+    src: '/images/slideshow-conversation.jpg',
+    alt: 'O.P. Suresh in conversation with another man.',
+    width: 884,
+    height: 1024,
+    caption: 'O.P. Suresh',
+  },
+  {
+    src: '/images/slideshow-three-indoor.jpg',
+    alt: 'O.P. Suresh with two other men at an indoor event.',
+    width: 768,
+    height: 1024,
+    caption: 'O.P. Suresh',
+  },
+];
 
 export const PERSON = {
   name: 'O.P. Suresh',
@@ -74,6 +167,10 @@ export type Picture = {
   width: number;
   height: number;
   caption: string;
+  /** CSS `object-position` for slideshow crops (default `center center`). */
+  objectPosition?: string;
+  /** Slideshow only — `contain` for very wide shots that would lose the subject under cover. */
+  objectFit?: 'cover' | 'contain';
 };
 
 export type Book = {
@@ -82,9 +179,20 @@ export type Book = {
   titleMl: string;
   gloss: string;
   note: string;
+  year: string;
+  publisherName: string;
+  publisherUrl?: string;
+  isbn?: string;
   href?: string;
+  sameAs?: string[];
+  bookAwards?: string[];
+  editor?: boolean;
   covers: Picture[];
 };
+
+export function bookPath(slug: string) {
+  return `/works/${slug}/`;
+}
 
 export const BOOKS: Book[] = [
   {
@@ -92,20 +200,25 @@ export const BOOKS: Book[] = [
     titleEn: 'Pala Kaalangalil Oru Poovu',
     titleMl: 'പലകാലങ്ങളിൽ ഒരു പൂവ്',
     gloss: 'Poetry. A Flower for All Seasons.',
+    year: '2008',
+    publisherName: 'DC Books',
+    publisherUrl: 'https://dcbookstore.com/',
+    isbn: '978-81-264-2007-0',
+    bookAwards: ['Atlas Kairali Award for Poetry, 2008'],
     note: 'DC Books, 2008. ISBN 978-81-264-2007-0. An Insight Publica cover is marked 3rd edition. Atlas Kairali Award for Poetry, 2008.',
     covers: [
       {
         src: '/images/cover-pala.jpg',
         alt: 'Red DC Books cover of Pala Kaalangalil Oru Poovu by O.P. Suresh.',
-        width: 644,
-        height: 1024,
+        width: 584,
+        height: 944,
         caption: 'DC Books',
       },
       {
         src: '/images/cover-pala-insight.jpg',
         alt: 'Insight Publica third-edition cover of Pala Kaalangalil Oru Poovu by O.P. Suresh.',
-        width: 661,
-        height: 1024,
+        width: 613,
+        height: 890,
         caption: 'Insight Publica, 3rd edition',
       },
     ],
@@ -115,14 +228,19 @@ export const BOOKS: Book[] = [
     titleEn: 'Verutheyirikkuvin',
     titleMl: 'വെറുതെയിരിക്കുവിൻ',
     gloss: 'Poetry. Sit Still.',
+    year: '2015',
+    publisherName: 'Mathrubhumi Books',
+    publisherUrl: 'https://www.mbibooks.com/',
+    isbn: '978-81-8266-544-6',
+    sameAs: [LINKS.verutheyirikkuvin],
     note: 'Mathrubhumi Books, 2015. ISBN 978-81-8266-544-6. ₹85. Cover design: Satheesh Unnikrishnan.',
     href: LINKS.verutheyirikkuvin,
     covers: [
       {
         src: '/images/cover-veruthe.jpg',
         alt: 'Yellow Mathrubhumi Books cover of Verutheyirikkuvin by O.P. Suresh.',
-        width: 647,
-        height: 1024,
+        width: 590,
+        height: 866,
         caption: 'Mathrubhumi Books',
       },
     ],
@@ -132,21 +250,26 @@ export const BOOKS: Book[] = [
     titleEn: 'Ekakikalude Aalkkoottam',
     titleMl: 'ഏകാകികളുടെ ആൾക്കൂട്ടം',
     gloss: 'Anecdotes. Crowd of Loners.',
+    year: '2017',
+    publisherName: 'Chintha Publishers',
+    publisherUrl: 'https://www.chinthapublishers.com/',
+    isbn: '9386637014',
+    sameAs: [LINKS.ekakikalude],
     note: 'Chintha Publishers, 2017. ISBN 9386637014. ₹75. A Basho Books copy is marked released May 2022, ISBN 978-93-93762-04-7, ₹120. Cover design: Nishan. Photograph: Binuraj.',
     href: LINKS.ekakikalude,
     covers: [
       {
         src: '/images/cover-ekaki.jpg',
         alt: 'Basho Books cover of Ekakikalude Aalkkoottam, a green bicycle with a basket of flowers.',
-        width: 640,
-        height: 1024,
+        width: 584,
+        height: 944,
         caption: 'Basho Books, 2022',
       },
       {
         src: '/images/cover-ekaki-red.jpg',
         alt: 'Red cover of Ekakikalude Aalkkoottam, crumpled paper and a cigarette. No publisher name is printed on this front.',
-        width: 664,
-        height: 1024,
+        width: 574,
+        height: 1023,
         caption: 'Another cover of the same title',
       },
     ],
@@ -156,21 +279,31 @@ export const BOOKS: Book[] = [
     titleEn: 'Taj Mahal',
     titleMl: 'താജ് മഹൽ',
     gloss: 'Poetry.',
+    year: '2018',
+    publisherName: 'DC Books',
+    publisherUrl: 'https://dcbookstore.com/',
+    isbn: '978-93-5282-594-3',
+    sameAs: [LINKS.tajmahal, LINKS.tajmahalInsight],
+    bookAwards: [
+      'Kerala Sahitya Akademi Award for Poetry, 2020',
+      'Cherukad Award, 2018',
+      'Dr. Rajan Memorial Award, 2018',
+    ],
     note: 'DC Books, 2018. ISBN 978-93-5282-594-3. The photographed DC Books cover is marked 2nd edition. ₹85. Thirty-five poems, written from 2015 to 2018. Insight Publica edition, ISBN 978-93-5517-195-5, ₹159.',
     href: LINKS.tajmahal,
     covers: [
       {
         src: '/images/cover-taj.jpg',
         alt: 'DC Books cover of Taj Mahal by O.P. Suresh, orange title on a black field, a white dog at the lower right.',
-        width: 661,
-        height: 1024,
+        width: 610,
+        height: 926,
         caption: 'DC Books, 2nd edition',
       },
       {
         src: '/images/cover-taj-insight.jpg',
         alt: 'Floral cover of Taj Mahal by O.P. Suresh, noting the Kerala Sahitya Akademi award.',
-        width: 652,
-        height: 1024,
+        width: 598,
+        height: 906,
         caption: 'Insight Publica',
       },
     ],
@@ -180,13 +313,18 @@ export const BOOKS: Book[] = [
     titleEn: 'Pachilayude Jeevacharithram',
     titleMl: 'പച്ചിലയുടെ ജീവചരിത്രം',
     gloss: 'Poetry. The Life History of a Green Leaf.',
+    year: '2023',
+    publisherName: 'Mathrubhumi Books',
+    publisherUrl: 'https://www.mbibooks.com/',
+    isbn: '978-93-5962-006-0',
+    bookAwards: ['Manimallika Literary Award, 2024'],
     note: 'Mathrubhumi Books, 2023. ISBN 978-93-5962-006-0. ₹190. Author photograph: Aju. Cover design: Vimal G.P. Manimallika Literary Award, 2024.',
     covers: [
       {
         src: '/images/cover-pachila.jpg',
         alt: 'Mathrubhumi Books cover of Pachilayude Jeevacharithram, a tree drawn as a fingerprint.',
-        width: 636,
-        height: 1024,
+        width: 500,
+        height: 927,
         caption: 'Mathrubhumi Books, 2023',
       },
     ],
@@ -196,13 +334,17 @@ export const BOOKS: Book[] = [
     titleEn: 'Cinemayude Sahayaathrikan',
     titleMl: 'സിനിമയുടെ സഹയാത്രികൻ',
     gloss: 'Editor. The Fellow Traveller of Cinema.',
+    year: '2024',
+    publisherName: 'Kerala State Chalachitra Academy',
+    isbn: '978-93-93541-61-1',
+    editor: true,
     note: 'Kerala State Chalachitra Academy, 2024. ISBN 978-93-93541-61-1. ₹500. The cover is a portrait of Chelavoor Venu. The back lists it as Malayalam essays, memoirs, and non-fiction.',
     covers: [
       {
         src: '/images/cover-cinema.jpg',
         alt: 'Cover of Cinemayude Sahayaathrikan, edited by O.P. Suresh, with a drawn portrait of Chelavoor Venu.',
-        width: 641,
-        height: 1024,
+        width: 595,
+        height: 926,
         caption: 'Kerala State Chalachitra Academy, 2024',
       },
     ],
@@ -400,46 +542,25 @@ export const ENGAGEMENTS = [
 
 export const PHOTOS: Picture[] = [
   {
-    src: '/images/portrait.jpg',
-    alt: 'Close portrait of O.P. Suresh, wearing glasses and a grey and black cap.',
-    width: 684,
-    height: 1024,
-    caption: 'O.P. Suresh',
-  },
-  {
     src: '/images/podium-culture.jpg',
     alt: 'O.P. Suresh speaking at a lectern marked Ministry of Culture, Government of India, and Sahitya Akademi.',
     width: 1024,
     height: 682,
-    caption: 'At a lectern of the Ministry of Culture and Sahitya Akademi.',
-  },
-  {
-    src: '/images/reading-bava.jpg',
-    alt: 'O.P. Suresh speaking at a microphone. The stand reads BAVA.',
-    width: 731,
-    height: 1024,
-    caption: 'Speaking. The microphone stand reads BAVA.',
-  },
-  {
-    src: '/images/portrait-field.jpg',
-    alt: 'O.P. Suresh seated on a rock above a green paddy field under cloud.',
-    width: 1024,
-    height: 460,
-    caption: 'O.P. Suresh',
+    caption: 'Speech at the Ministry of Culture and Sahitya Akademi.',
   },
   {
     src: '/images/letters-2026.jpg',
     alt: 'O.P. Suresh on a Festival of Letters panel. His nameplate reads O.P. Suresh. The banner is dated 30 March to 4 April 2026.',
     width: 1024,
     height: 634,
-    caption: 'Festival of Letters, Sahityotsav. Ministry of Culture and Sahitya Akademi. 30 March–4 April 2026.',
+    caption: 'Festival of Letters. 30 March–4 April 2026.',
   },
   {
     src: '/images/klf-2025.jpg',
     alt: 'O.P. Suresh speaking on a Kerala Literature Festival panel. The backdrop reads 8th edition, 23, 24, 25, 26 January 2025, Kozhikode Beach.',
     width: 1024,
     height: 682,
-    caption: 'Kerala Literature Festival, 8th edition. 23–26 January 2025, Kozhikode Beach.',
+    caption: 'Kerala Literature Festival. 23–26 January 2025, Kozhikode Beach.',
   },
   {
     src: '/images/wlf-2024.jpg',
@@ -453,23 +574,45 @@ export const PHOTOS: Picture[] = [
     alt: 'O.P. Suresh speaking at the Kozhikode Corporation KO Film Fest open forum. The banner includes the Kerala State Chalachitra Academy and the date to 11 January 2024.',
     width: 1024,
     height: 682,
-    caption: 'Kozhikode Corporation KO Film Fest open forum, to 11 January 2024.',
+    caption: 'Kozhikode Corporation KO Film Fest. To 11 January 2024.',
   },
   {
     src: '/images/iffk.jpg',
     alt: 'O.P. Suresh standing with four other people in front of large letters spelling IFFK.',
     width: 1024,
     height: 768,
-    caption: 'At the IFFK sign.',
+    caption: 'At the IFFK.',
+  },
+  {
+    src: '/images/reading-two.jpg',
+    alt: 'O.P. Suresh speaking at the Kerala Literature Festival. The lanyards read KLF.',
+    width: 1024,
+    height: 682,
+    caption: 'Kerala Literature Festival.',
+  },
+  {
+    src: '/images/seated-panel.jpg',
+    alt: 'O.P. Suresh speaking on a panel. The backdrop reads KULF.',
+    width: 1024,
+    height: 682,
+    caption: 'KULF.',
+  },
+  {
+    src: '/images/reading-bava.jpg',
+    alt: 'O.P. Suresh speaking at a microphone.',
+    width: 731,
+    height: 1024,
+    caption: 'Speech at a public reading.',
   },
   {
     src: '/images/sketch-2024.jpg',
     alt: 'Ink and colour drawing of O.P. Suresh in a cap, looking at a phone. The sheet is dated 20/11/24.',
     width: 843,
     height: 1024,
-    caption: 'Drawing, dated 20 November 2024. Signed de va Prakasen.',
+    caption: 'O.P. sketch by deva Prakash.',
   },
 ];
+
 
 export function personJsonLd() {
   const personId = `${SITE}/#person`;
@@ -496,16 +639,15 @@ export function personJsonLd() {
         jobTitle: ['Poet', 'Author', 'Journalist'],
         nationality: { '@type': 'Country', name: 'India' },
         homeLocation: { '@type': 'Place', name: PERSON.nativePlace },
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: 'Satori, Nellikode',
-          addressLocality: 'Kozhikode',
-          addressRegion: 'Kerala',
-          postalCode: '673016',
-          addressCountry: 'IN',
+        knowsLanguage: [
+          { '@type': 'Language', name: 'Malayalam' },
+          { '@type': 'Language', name: 'English' },
+        ],
+        contactPoint: {
+          '@type': 'ContactPoint',
+          contactType: 'public enquiries',
+          url: `${SITE}/contact/`,
         },
-        email: PERSON.email,
-        telephone: PERSON.phone,
         award: AWARDS.map((a) =>
           [a.year, a.titleEn, a.work ? `for ${a.work}` : ''].filter(Boolean).join(' '),
         ),
@@ -520,6 +662,29 @@ export function personJsonLd() {
           LINKS.jiosaavn,
         ],
       },
+      ...BOOKS.map((book) => {
+        const url = `${SITE}${bookPath(book.slug)}`;
+        const publisher: { '@type': 'Organization'; name: string; url?: string } = {
+          '@type': 'Organization',
+          name: book.publisherName,
+        };
+        if (book.publisherUrl) publisher.url = book.publisherUrl;
+        return {
+          '@type': 'Book',
+          '@id': url,
+          name: book.titleEn,
+          alternateName: book.titleMl,
+          inLanguage: 'ml',
+          url,
+          image: `${SITE}${book.covers[0].src}`,
+          datePublished: book.year,
+          ...(book.isbn ? { isbn: book.isbn } : {}),
+          ...(book.editor ? { editor: { '@id': personId } } : { author: { '@id': personId } }),
+          publisher,
+          ...(book.sameAs?.length ? { sameAs: book.sameAs } : {}),
+          ...(book.bookAwards?.length ? { award: book.bookAwards } : {}),
+        };
+      }),
     ],
   };
 }

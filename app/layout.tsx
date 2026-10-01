@@ -47,12 +47,12 @@ export const metadata: Metadata = {
   },
   description:
     'Official site of O.P. Suresh, Malayalam poet, author, and journalist from Cheekode, Kerala.',
-  alternates: { canonical: '/' },
+  alternates: { canonical: `${site}/` },
   openGraph: {
     title: 'O.P. Suresh',
     description: 'Malayalam poet, author, and journalist. Cheekode, Malappuram, Kerala.',
     type: 'profile',
-    url: site,
+    url: `${site}/`,
     locale: 'en_IN',
     images: [
       {

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { AWARDS, BOOKS, LINKS, PERSON, PORTRAIT } from '@/lib/suresh';
+import { AWARDS, BOOKS, LINKS, PERSON, PORTRAIT, bookPath } from '@/lib/suresh';
 
 const worksLeft = BOOKS.slice(0, 3);
 const worksRight = BOOKS.slice(3);
@@ -33,6 +33,9 @@ export default function HomePage() {
         <span className="ornament" aria-hidden="true" />
         <p className="titlepage-links">
           <a href={`mailto:${PERSON.email}`}>{PERSON.email}</a>
+          <a href={PERSON.wikipediaMl}>Malayalam Wikipedia</a>
+          <a href={LINKS.wlf}>Wayanad Literature Festival</a>
+          <a href={LINKS.klf}>Kerala Literature Festival</a>
           <a href={PERSON.truecopyTag}>Truecopy Think</a>
         </p>
       </section>
@@ -42,8 +45,8 @@ export default function HomePage() {
           <Image
             src="/images/cover-taj.jpg"
             alt="DC Books cover of Taj Mahal by O.P. Suresh. The cover is marked 2nd edition."
-            width={661}
-            height={1024}
+            width={610}
+            height={926}
             priority
           />
           <figcaption>
@@ -62,8 +65,8 @@ export default function HomePage() {
             Cherukad Award, 2018.
           </p>
           <p className="feature-links">
-            <a href={LINKS.tajmahal}>The book</a>
-            <Link href="/works">Works</Link>
+            <Link href={bookPath('taj-mahal')}>The book</Link>
+            <a href={LINKS.tajmahal}>DC Books</a>
           </p>
         </div>
       </section>
@@ -74,23 +77,43 @@ export default function HomePage() {
         <h2>Works</h2>
         <div className="entry-group">
           {worksLeft.map((b) => (
-            <Link className="entry" key={b.slug} href={b.href ?? `/works#${b.slug}`}>
-              <strong>{b.titleEn}</strong>
-              <span className="ml" lang="ml">
-                {b.titleMl}
+            <Link className="entry entry-work" key={b.slug} href={bookPath(b.slug)}>
+              <span className="work-plate work-plate-sm">
+                <Image
+                  src={b.covers[0].src}
+                  alt=""
+                  width={b.covers[0].width}
+                  height={b.covers[0].height}
+                />
               </span>
-              {b.gloss}
+              <span>
+                <strong>{b.titleEn}</strong>
+                <span className="ml" lang="ml">
+                  {b.titleMl}
+                </span>
+                {b.gloss}
+              </span>
             </Link>
           ))}
         </div>
         <div className="entry-group">
           {worksRight.map((b) => (
-            <Link className="entry" key={b.slug} href={b.href ?? `/works#${b.slug}`}>
-              <strong>{b.titleEn}</strong>
-              <span className="ml" lang="ml">
-                {b.titleMl}
+            <Link className="entry entry-work" key={b.slug} href={bookPath(b.slug)}>
+              <span className="work-plate work-plate-sm">
+                <Image
+                  src={b.covers[0].src}
+                  alt=""
+                  width={b.covers[0].width}
+                  height={b.covers[0].height}
+                />
               </span>
-              {b.gloss}
+              <span>
+                <strong>{b.titleEn}</strong>
+                <span className="ml" lang="ml">
+                  {b.titleMl}
+                </span>
+                {b.gloss}
+              </span>
             </Link>
           ))}
         </div>

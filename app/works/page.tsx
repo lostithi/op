@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { BOOKS, LINKS, POEMS, READINGS, SONGS } from '@/lib/suresh';
+import { BOOKS, LINKS, POEMS, READINGS, SONGS, bookPath } from '@/lib/suresh';
 
 export const metadata: Metadata = { title: 'Works' };
 
@@ -34,8 +34,8 @@ export default function WorksPage() {
             <Image
               src="/images/cover-taj.jpg"
               alt="DC Books cover of Taj Mahal by O.P. Suresh. The cover is marked 2nd edition."
-              width={661}
-              height={1024}
+              width={610}
+              height={926}
             />
             <figcaption>DC Books, 2nd edition</figcaption>
           </figure>
@@ -95,41 +95,38 @@ export default function WorksPage() {
         </div>
       </section>
 
-      <section className="folio-sec folio-sea">
-        <div className="folio-axis" aria-hidden="true" />
-        <AxisMark kind="circle" />
-        <div className="folio-pane left">
-          <p className="folio-micro">Collected works</p>
+      <section className="folio-sec folio-books">
+        <div className="folio-books-inner">
           <h2 className="folio-display serif">The books as they are recorded.</h2>
-        </div>
-        <div className="folio-pane right">
-          <div className="cover-grid">
-            {BOOKS.flatMap((book) =>
-              book.covers.map((cover) => (
-                <figure key={cover.src}>
-                  <Image src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} />
-                  <figcaption>
-                    {book.titleEn}. {cover.caption}
-                  </figcaption>
-                </figure>
-              )),
-            )}
-          </div>
-          <ul className="archive-list">
-            {BOOKS.map((b) => (
-              <li key={b.slug}>
-                <a className="archive-item" href={b.href ?? `#${b.slug}`} id={b.slug}>
-                  <span>
-                    <strong>{b.titleEn}</strong>
-                    <span className="ml" lang="ml">
-                      {' '}
-                      {b.titleMl}
+          <ul className="work-catalogue">
+            {BOOKS.map((book) => {
+              return (
+                <li key={book.slug}>
+                  <Link className="work-row" href={bookPath(book.slug)} id={book.slug}>
+                    <span className="work-plates">
+                      {book.covers.map((cover) => (
+                        <span className="work-plate" key={cover.src}>
+                          <Image src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} />
+                          {book.covers.length > 1 ? (
+                            <span className="work-plate-caption">{cover.caption}</span>
+                          ) : null}
+                        </span>
+                      ))}
                     </span>
-                  </span>
-                  <span className="archive-note">{b.note}</span>
-                </a>
-              </li>
-            ))}
+                    <span className="work-copy">
+                      <strong>{book.titleEn}</strong>
+                      <span className="ml" lang="ml">
+                        {book.titleMl}
+                      </span>
+                      <span className="work-meta">
+                        {book.year}. {book.publisherName}
+                      </span>
+                      <span className="archive-note">{book.note}</span>
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
           <p className="folio-lede serif">Poems in print.</p>
           <figure className="folio-figure">
