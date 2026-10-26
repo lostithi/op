@@ -2,12 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { PATHS } from '@/lib/suresh';
 
 const links = [
-  { href: '/works', label: 'Works' },
-  { href: '/awards', label: 'Awards' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+  { href: PATHS.works, label: 'Works' },
+  { href: PATHS.awards, label: 'Awards' },
+  { href: PATHS.about, label: 'About' },
+  { href: PATHS.contact, label: 'Contact' },
 ];
 
 export function SiteHeader() {

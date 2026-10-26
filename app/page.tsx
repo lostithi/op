@@ -1,6 +1,11 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { AWARDS, BOOKS, LINKS, PERSON, PORTRAIT, bookPath } from '@/lib/suresh';
+import { AWARDS, BOOKS, LINKS, PATHS, PERSON, PORTRAIT, absoluteUrl, bookPath } from '@/lib/suresh';
+
+export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl(PATHS.home) },
+};
 
 const worksLeft = BOOKS.slice(0, 3);
 const worksRight = BOOKS.slice(3);

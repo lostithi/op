@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { BOOKS, bookPath } from '@/lib/suresh';
+import { BOOKS, absoluteUrl, bookPath } from '@/lib/suresh';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: book.titleEn,
     description: `${book.titleEn} (${book.titleMl}). ${book.note}`,
-    alternates: { canonical: bookPath(book.slug) },
+    alternates: { canonical: absoluteUrl(bookPath(book.slug)) },
   };
 }
 

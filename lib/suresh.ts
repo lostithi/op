@@ -1,5 +1,18 @@
 export const SITE = 'https://opsuresh.com';
 
+/** Trailing-slash paths (matches `trailingSlash: true` in Next config). */
+export const PATHS = {
+  home: '/',
+  works: '/works/',
+  awards: '/awards/',
+  about: '/about/',
+  contact: '/contact/',
+} as const;
+
+export function absoluteUrl(path: string) {
+  return path === '/' ? `${SITE}/` : `${SITE}${path}`;
+}
+
 /** Homepage and site metadata only — not used in the About slideshow or gallery. */
 export const PORTRAIT = {
   src: '/images/portrait-studio.jpg',

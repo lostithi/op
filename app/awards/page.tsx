@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
-import { AWARDS } from '@/lib/suresh';
+import { AWARDS, PATHS, absoluteUrl } from '@/lib/suresh';
 
-export const metadata: Metadata = { title: 'Awards' };
+export const metadata: Metadata = {
+  title: 'Awards',
+  alternates: { canonical: absoluteUrl(PATHS.awards) },
+};
 
 const split = Math.ceil(AWARDS.length / 2);
 const left = AWARDS.slice(0, split);

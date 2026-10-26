@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { BOOKS, LINKS, POEMS, READINGS, SONGS, bookPath } from '@/lib/suresh';
+import { BOOKS, LINKS, PATHS, POEMS, READINGS, SONGS, absoluteUrl, bookPath } from '@/lib/suresh';
 
-export const metadata: Metadata = { title: 'Works' };
+export const metadata: Metadata = {
+  title: 'Works',
+  alternates: { canonical: absoluteUrl(PATHS.works) },
+};
 
 function AxisMark({ kind }: { kind: 'cross' | 'square' | 'circle' }) {
   return (

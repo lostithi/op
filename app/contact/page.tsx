@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
-import { PERSON } from '@/lib/suresh';
+import { PATHS, PERSON, absoluteUrl } from '@/lib/suresh';
 
-export const metadata: Metadata = { title: 'Contact' };
+export const metadata: Metadata = {
+  title: 'Contact',
+  alternates: { canonical: absoluteUrl(PATHS.contact) },
+};
 
 export default function ContactPage() {
   return (

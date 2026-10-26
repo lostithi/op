@@ -1,9 +1,22 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { PortraitSlideshow } from '@/components/PortraitSlideshow';
-import { ABOUT_PORTRAIT, EDUCATION, ENGAGEMENTS, LINKS, PERSON, PHOTOS, PORTRAIT_SLIDESHOW } from '@/lib/suresh';
+import {
+  ABOUT_PORTRAIT,
+  EDUCATION,
+  ENGAGEMENTS,
+  LINKS,
+  PATHS,
+  PERSON,
+  PHOTOS,
+  PORTRAIT_SLIDESHOW,
+  absoluteUrl,
+} from '@/lib/suresh';
 
-export const metadata: Metadata = { title: 'About' };
+export const metadata: Metadata = {
+  title: 'About',
+  alternates: { canonical: absoluteUrl(PATHS.about) },
+};
 
 export default function AboutPage() {
   return (

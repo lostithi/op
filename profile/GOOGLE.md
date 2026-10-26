@@ -15,7 +15,7 @@ Wikidata, books, and news. O.P. Suresh already has:
 1. Point opsuresh.com at the host in Cloudflare, then ship the site. The JSON-LD `url` and canonical are already https://opsuresh.com.
 2. Run `wikidata-quickstatements.qs` while logged into Wikidata. The official-website line (P856) is https://opsuresh.com/.
 3. Verify Person schema with Google's Rich Results Test.
-4. Add the domain to Google Search Console and request indexing.
+4. Add the domain to Google Search Console and request indexing. In Page indexing, **Page with redirect** on URLs like `/about` (no trailing slash) is expected: the site uses trailing slashes (`/about/`). Google should index the final URL, not the redirect. After deploy, use URL Inspection on `https://opsuresh.com/about/` and request indexing; ignore non-canonical redirect URLs.
 5. If a panel appears, claim it with [Google's knowledge-panel tools](https://support.google.com/knowledgepanel/answer/7534842).
 6. Photographs: a Wikimedia Commons portrait (free license) helps more than a site-only image.
 
